@@ -2,7 +2,7 @@ import './App.css'
 
 // 이 객체의 내용만 바꾸면 페이지 전체가 바뀝니다.
 const profile = {
-  name: '홍길동',
+  name: '루피의 일상',
   tagline: '새로운 것을 배우고 만드는 걸 좋아하는 사람입니다.',
   favorites: [
     { emoji: '☕', title: '커피', description: '아침마다 직접 내려 마시는 핸드드립 한 잔' },
