@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { CoffeeList, RecipeDetail } from './Coffee.jsx'
+import { RecipeDetail, RecipeList } from './RecipePages.jsx'
+import { categories } from './recipes.js'
 import './App.css'
 
 // 이 객체의 내용만 바꾸면 페이지 전체가 바뀝니다.
@@ -8,8 +9,8 @@ const profile = {
   tagline: '새로운 것을 배우고 만드는 걸 좋아하는 사람입니다.',
   favorites: [
     // link가 있는 카드는 클릭하면 해당 페이지로 이동합니다.
+    { emoji: '🍳', title: '요리', description: '간단하게 만들어 먹는 집밥 한 끼', link: '#/cooking' },
     { emoji: '☕', title: '커피', description: '아침마다 직접 내려 마시는 핸드드립 한 잔', link: '#/coffee' },
-    { emoji: '📚', title: '독서', description: '주말 오후에 읽는 에세이와 소설' },
     { emoji: '🚶', title: '산책', description: '생각을 정리해 주는 동네 한 바퀴' },
   ],
   contacts: [
@@ -40,8 +41,11 @@ function useHashPath() {
 function App() {
   const path = useHashPath()
 
-  if (path === '/coffee') return <CoffeeList />
-  if (path.startsWith('/coffee/')) return <RecipeDetail id={path.slice('/coffee/'.length)} />
+  // 예: '/coffee' → 목록, '/coffee/hand-drip-iced-1' → 상세
+  const [category, id] = path.slice(1).split('/')
+  if (Object.hasOwn(categories, category)) {
+    return id ? <RecipeDetail category={category} id={id} /> : <RecipeList category={category} />
+  }
   return <Home />
 }
 

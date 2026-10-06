@@ -183,8 +183,9 @@ h2 {
 }
 
 .prep dt {
-  width: 80px;
+  width: 96px;
   flex-shrink: 0;
+  word-break: keep-all;
   font-weight: 600;
   color: var(--text-h);
 }
@@ -217,6 +218,42 @@ h2 {
 
 .steps tbody tr + tr td {
   border-top: 1px solid var(--border);
+}
+
+.howto {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.howto li {
+  counter-increment: step;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 12px 20px;
+}
+
+.howto li + li {
+  border-top: 1px solid var(--border);
+}
+
+.howto li::before {
+  content: counter(step);
+  flex-shrink: 0;
+  width: 1.6em;
+  height: 1.6em;
+  line-height: 1.6em;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--accent);
 }
 
 .notes {
