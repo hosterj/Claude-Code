@@ -48,17 +48,22 @@ export function RecipeDetail({ category, id }) {
         <p className="tagline">{recipe.summary}</p>
       </header>
 
-      {recipe.prep && (
+      {(recipe.ingredients || recipe.prep) && (
         <section className="recipe-section">
           <h2>준비</h2>
-          <dl className="prep">
-            {recipe.prep.map((p) => (
-              <div key={p.label}>
-                <dt>{p.label}</dt>
-                <dd>{p.value}</dd>
-              </div>
-            ))}
-          </dl>
+          {recipe.ingredients && (
+            <p className="ingredients">{recipe.ingredients.join(', ')}</p>
+          )}
+          {recipe.prep && (
+            <dl className="prep">
+              {recipe.prep.map((p) => (
+                <div key={p.label}>
+                  <dt>{p.label}</dt>
+                  <dd>{p.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
         </section>
       )}
 

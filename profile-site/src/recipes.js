@@ -3,7 +3,8 @@
 // 카테고리 키와 레시피 id는 주소(#/<카테고리>/<id>)에 쓰이므로 영문 소문자와 - 로만 적습니다.
 //
 // 레시피에 쓸 수 있는 항목 (모두 선택, 있는 것만 화면에 나옵니다)
-// - prep:  준비물 목록 [{ label, value }]
+// - ingredients: 준비 재료를 한 줄로 표시 ['계란 1개', '물', ...]
+// - prep:  준비물을 항목별 표로 표시 [{ label, value }]
 // - pours: 커피 추출 표 [{ time, add, total }] — add는 이번에 붓는 양, total은 누적 양(ml)
 // - steps: 순서대로 하는 과정 ['...', '...']
 // - notes: 메모 ['...']
@@ -16,12 +17,7 @@ export const categories = {
         id: 'steamed-egg-1',
         name: '간단 계란찜 1인분',
         summary: '전자레인지 2분',
-        prep: [
-          { label: '계란', value: '1인분' },
-          { label: '물', value: '약간 (약 30ml)' },
-          { label: '다시다 가루', value: '약간' },
-          { label: '멸치액젓', value: '진짜 쪼금' },
-        ],
+        ingredients: ['계란 1개', '물', '다시다 가루', '멸치액젓'],
         steps: [
           '계란을 풀고 물을 약간(약 30ml) 넣어 섞기',
           '다시다 가루 약간 넣기',
